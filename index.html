@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Campo Minado (DevJoy Games)</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <!--
+    App do Campo Minado:
+    - Cabeçalho com título e instruções rápidas
+    - Painel com configurações (tamanho e minas), timer, contador de minas
+    - Grid do jogo gerado via JavaScript
+  -->
+  <main class="app" aria-label="Campo Minado">
+    <header class="top">
+      <h1>Campo Minado</h1>
+      <p class="hint">
+        Clique esquerdo: revelar • Clique direito: bandeira • Primeiro clique nunca explode
+      </p>
+    </header>
+
+    <section class="panel" aria-label="Painel do jogo">
+      <div class="controls">
+        <label class="field">
+          Linhas
+          <input id="rows" type="number" min="5" max="30" value="10" />
+        </label>
+
+        <label class="field">
+          Colunas
+          <input id="cols" type="number" min="5" max="40" value="10" />
+        </label>
+
+        <label class="field">
+          Minas
+          <input id="mines" type="number" min="1" value="10" />
+        </label>
+
+        <button id="btnNew" class="btn" type="button">Novo Jogo</button>
+      </div>
+
+      <div class="status" aria-label="Status do jogo">
+        <div class="pill" title="Minas restantes (estimativa: minas - bandeiras)">
+          💣 <span id="minesLeft">0</span>
+        </div>
+        <div class="pill" title="Tempo (segundos)">
+          ⏱️ <span id="time">0</span>
+        </div>
+        <div id="message" class="message" role="status" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!--
+      O tabuleiro:
+      - Será preenchido dinamicamente com botões (células)
+      - Usar botões ajuda com acessibilidade e foco por teclado
+    -->
+    <section class="boardWrap" aria-label="Tabuleiro">
+      <div id="board" class="board" role="grid" aria-label="Grid do Campo Minado"></div>
+    </section>
+
+    <footer class="foot">
+      <small>DevJoy Games.</small>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
